@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pulse — Music Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <audio id="audio" preload="metadata"></audio>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <div class="app">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand" id="brandBtn" role="button" tabindex="0">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22">
+              <circle cx="12" cy="12" r="12" fill="#1ed760" />
+              <path d="M6.5 15.2c3.4-1.3 7.1-1.6 10.8-.8" fill="none" stroke="#121212" stroke-width="1.7" stroke-linecap="round" />
+              <path d="M6.2 12.2c4-1.6 8.4-2 12.8-1" fill="none" stroke="#121212" stroke-width="1.7" stroke-linecap="round" />
+              <path d="M6 9.1c4.5-1.8 9.4-2.2 14.2-1" fill="none" stroke="#121212" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span>Pulse</span>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active" type="button" data-view="home">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M12.5 3.2 4 10.2V21h6.2v-6.4h3.6V21H20V10.2l-7.5-7z" />
+            </svg>
+            Home
+          </button>
+          <button class="nav-item" type="button" data-view="search">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.2-3.2" />
+            </svg>
+            Search
+          </button>
+          <button class="nav-item" type="button" data-view="library">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M4 5h12v2H4zm0 6h16v2H4zm0 6h10v2H4z" />
+            </svg>
+            Your Library
+          </button>
+        </nav>
+
+        <div class="sidebar-block">
+          <p class="sidebar-label">Playlist</p>
+          <button class="playlist-chip active" type="button" data-view="home">Evening Mix</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="top-nav">
+            <button class="circle-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+              </svg>
+            </button>
+            <button class="circle-btn" id="backBtn" type="button" aria-label="Back" disabled>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M15.4 5.4 9 12l6.4 6.6-1.4 1.4L6.2 12 14 3.9z" />
+              </svg>
+            </button>
+            <button class="circle-btn" id="forwardBtn" type="button" aria-label="Forward" disabled>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="m8.6 5.4 6.4 6.6-6.4 6.6 1.4 1.4L17.8 12 10 3.9z" />
+              </svg>
+            </button>
+          </div>
+          <button class="user-pill" id="userBtn" type="button">Demo listener</button>
+        </header>
+
+        <section class="view" id="view-home">
+          <div class="hero">
+            <div class="hero-art" id="heroArt" aria-hidden="true"></div>
+            <div class="hero-copy">
+              <p class="eyebrow">Playlist</p>
+              <h1>Evening Mix</h1>
+              <p class="hero-meta">Royalty-free demo tracks · <span id="trackCount">0</span> songs</p>
+              <div class="hero-actions">
+                <button class="play-hero" id="heroPlay" type="button" aria-label="Play playlist">
+                  <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <svg class="icon-pause hidden" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M6 5h4v14H6zm8 0h4v14h-4z" />
+                  </svg>
+                </button>
+                <label class="autoplay-toggle">
+                  <input type="checkbox" id="autoplay" checked />
+                  <span>Autoplay</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="track-table" aria-label="Playlist">
+            <div class="table-head">
+              <span class="col-num">#</span>
+              <span class="col-title">Title</span>
+              <span class="col-artist">Artist</span>
+              <span class="col-dur">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm.8 8.6-.8.5V8h-1.6v6.2l2.6 1.6.8-1.4z" />
+                </svg>
+              </span>
+            </div>
+            <ul id="playlist" class="playlist"></ul>
+          </div>
+        </section>
+
+        <section class="view hidden" id="view-search">
+          <div class="page-pad">
+            <h2 class="page-title">Search</h2>
+            <label class="search-box">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.2-3.2" />
+              </svg>
+              <input id="searchInput" type="search" placeholder="What do you want to listen to?" autocomplete="off" />
+            </label>
+            <p class="page-hint" id="searchHint">Try a song or artist name.</p>
+            <ul id="searchResults" class="playlist"></ul>
+          </div>
+        </section>
+
+        <section class="view hidden" id="view-library">
+          <div class="page-pad">
+            <h2 class="page-title">Your Library</h2>
+            <div class="lib-cards">
+              <button class="lib-card" type="button" data-view="home">
+                <span class="lib-cover cover-1"></span>
+                <span>
+                  <strong>Evening Mix</strong>
+                  <small>Playlist · 6 songs</small>
+                </span>
+              </button>
+              <button class="lib-card" type="button" id="likedCard">
+                <span class="lib-cover cover-4"></span>
+                <span>
+                  <strong>Liked Songs</strong>
+                  <small id="likedCount">0 liked</small>
+                </span>
+              </button>
+            </div>
+            <h3 class="section-title">All tracks</h3>
+            <ul id="libraryList" class="playlist"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile">
+      <button class="mobile-nav-item active" type="button" data-view="home">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12.5 3.2 4 10.2V21h6.2v-6.4h3.6V21H20V10.2l-7.5-7z" /></svg>
+        Home
+      </button>
+      <button class="mobile-nav-item" type="button" data-view="search">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.2-3.2" /></svg>
+        Search
+      </button>
+      <button class="mobile-nav-item" type="button" data-view="library">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M4 5h12v2H4zm0 6h16v2H4zm0 6h10v2H4z" /></svg>
+        Library
+      </button>
+    </nav>
+
+    <footer class="player">
+      <div class="now-playing">
+        <div class="now-art" id="nowArt"></div>
+        <div class="now-text">
+          <p class="now-title" id="nowTitle">Select a track</p>
+          <p class="now-artist" id="nowArtist">Pulse</p>
+        </div>
+        <button class="icon-btn" id="likeBtn" type="button" aria-label="Like">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M12 20.4 4.7 13C2.9 11.2 2.9 8.3 4.7 6.5c1.8-1.8 4.7-1.8 6.5 0L12 7.3l.8-.8c1.8-1.8 4.7-1.8 6.5 0 1.8 1.8 1.8 4.7 0 6.5L12 20.4z" fill="none" stroke="currentColor" stroke-width="1.7" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="transport">
+        <div class="transport-buttons">
+          <button class="icon-btn" id="shuffleBtn" type="button" aria-label="Shuffle">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M16 4h4v4h-1.6V6.8l-4.2 4.2-1.1-1.1 4.2-4.2H16V4zM4 6.4h5.2l3.3 3.8-1.2 1.1L8.6 8H4V6.4zm12 9.2h2.3l-4.3-4.8 1.2-1.1 4.7 5.3V18H16v-2.4zM4 16h4.8l1.7-2 1.2 1.1L9.4 17.6H4V16z" />
+            </svg>
+          </button>
+          <button class="icon-btn" id="prevBtn" type="button" aria-label="Previous">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" /></svg>
+          </button>
+          <button class="play-main" id="playBtn" type="button" aria-label="Play">
+            <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="#121212"><path d="M8 5v14l11-7z" /></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24" width="22" height="22" fill="#121212"><path d="M6 5h4v14H6zm8 0h4v14h-4z" /></svg>
+          </button>
+          <button class="icon-btn" id="nextBtn" type="button" aria-label="Next">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z" /></svg>
+          </button>
+          <button class="icon-btn" id="repeatBtn" type="button" aria-label="Repeat">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M7 7h8.2V4.8L19 8l-3.8 3.2V8.6H7.6v3.2H6V7.6A.6.6 0 0 1 7 7zm10 10H8.8v2.2L5 16l3.8-3.2v2.6h7.6v-3.2H18v4.2a.6.6 0 0 1-1 .6z" />
+            </svg>
+          </button>
+        </div>
+        <div class="progress-row">
+          <span id="currentTime">0:00</span>
+          <input type="range" id="progress" min="0" max="100" value="0" step="0.1" aria-label="Seek" />
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+
+      <div class="volume-block">
+        <button class="icon-btn" id="muteBtn" type="button" aria-label="Mute">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M4 9v6h3.5L12 19.5V4.5L7.5 9H4zm11.5 3c0-1.8-1-3.4-2.5-4.2v8.4c1.5-.8 2.5-2.4 2.5-4.2z" />
+          </svg>
+        </button>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" aria-label="Volume" />
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
