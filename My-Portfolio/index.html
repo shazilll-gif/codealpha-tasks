@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shazil Ayaz | Curriculum Vitae & Portfolio</title>
+  <meta name="description"
+    content="Official Curriculum Vitae and Personal Portfolio of Shazil Ayaz - BS Cyber-Security & Computing Student.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+
+<body>
+
+  <!-- Particle Background Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Custom Glow Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-logo">
+        <span>&lt;</span>ShazilAyaz<span> /&gt;</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.88rem;">
+          Get In Touch
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="section hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>BS Cyber-Security & Computing Student</span>
+        </div>
+
+        <h1 class="hero-title">
+          Hi, I'm <span class="highlight">Shazil Ayaz</span>
+        </h1>
+
+        <p class="hero-description">
+          Motivated BS Computing student with experience in administrative support and online entrepreneurship.
+          Currently developing expertise in programming, web development, and QA testing with strong Excel and
+          problem-solving skills.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#experience" class="btn btn-primary">
+            View Experience
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            Contact Me
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <div class="hero-socials">
+          <span>CONTACT</span>
+          <a href="mailto:Shazilayaz21@gmail.com" class="btn-icon" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="tel:03110532440" class="btn-icon" aria-label="Phone">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="avatar-wrapper">
+          <img src="assets/images/profile_avatar.png" alt="Shazil Ayaz Avatar" class="avatar-img">
+
+          <div class="floating-pill pill-1">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            <span>Web Dev Intern @ Firnas Tech</span>
+          </div>
+
+          <div class="floating-pill pill-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8 21 12 17 16 21"></polyline>
+            </svg>
+            <span>Gold Medalist</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">01. Profile</div>
+        <h2 class="section-title">About <span>Shazil Ayaz</span></h2>
+        <p class="section-subtitle">Summary of background, capabilities, and computing pursuits.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Motivated BS Computing student with experience in administrative support and online entrepreneurship.
+            Skilled in data handling, workflow management, and communication.
+          </p>
+          <p>
+            Currently developing expertise in programming and web development, with strong Excel and problem-solving
+            skills. Pursuing a <strong>BS Computing</strong> degree at <em>The Millennium Universal College (Pearson
+              College, London)</em> with a focus on BS Cyber-Security and Web Development in Abbottabad, Pakistan.
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number" data-target="5">0</div>
+              <div class="stat-label">Work Roles & Internships</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="2">0</div>
+              <div class="stat-label">Gold Medal Awards</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="3">0</div>
+              <div class="stat-label">Languages Spoken</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Section -->
+  <section class="section experience" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">02. Career</div>
+        <h2 class="section-title">Work <span>Experience</span></h2>
+        <p class="section-subtitle">Professional roles in web development, quality assurance, administration, sales, and
+          online business.</p>
+      </div>
+
+      <div class="timeline">
+        <!-- Firnas Tech -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="role-title">Web Development Intern</h3>
+                <span class="company-name">Firnas Tech</span>
+              </div>
+              <span class="badge-tag">Current Internship</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Working as intern in web development building clean, functional web solutions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Digisync -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="role-title">QA Intern</h3>
+                <span class="company-name">Digisync (HNL Company)</span>
+              </div>
+              <span class="badge-tag">Current Internship</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Working as an intern in Quality Assurance (QA) performing application testing and quality checks.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Reliant BPO Company -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="role-title">Call Sales Representative</h3>
+                <span class="company-name">Reliant BPO Company</span>
+              </div>
+              <span class="badge-tag">6 Months Experience</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>6 months of hands-on experience in customer communication, outreach, and call sales execution.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Assabiqun Company -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="role-title">Administrative Support</h3>
+                <span class="company-name">Assabiqun Company</span>
+              </div>
+              <span class="badge-tag">Previous Role</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Assist in office tasks, data handling, and administrative support.</li>
+              <li>Support daily operations and improve workflow efficiency.</li>
+              <li>Manage scheduling and document organization.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Entrepreneur / Seller -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="role-title">Entrepreneur / Seller</h3>
+                <span class="company-name">Online Marketplace</span>
+              </div>
+              <span class="badge-tag">Previous Role</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Managed buying and selling of products on social platforms.</li>
+              <li>Handled online transactions and negotiations effectively.</li>
+              <li>Maintained high customer satisfaction and client communication.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section education" id="education">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">03. Academics</div>
+        <h2 class="section-title">Education & <span>Qualifications</span></h2>
+        <p class="section-subtitle">Academic journey from secondary education to ongoing computing degree.</p>
+      </div>
+
+      <div class="education-grid">
+        <div class="edu-card">
+          <div class="edu-icon">🎓</div>
+          <h3 class="edu-degree">BS Computing</h3>
+          <p class="edu-institution">The Millennium Universal College (Pearson College, London)</p>
+          <span class="badge-tag"
+            style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3); color: var(--accent-cyan);">Ongoing
+            Degree</span>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-icon">🏅</div>
+          <h3 class="edu-degree">FSC (Computer Science)</h3>
+          <p class="edu-institution">2021 – 2023</p>
+          <div class="honors-badge">
+            🏆 Gold Medalist
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-icon">🥇</div>
+          <h3 class="edu-degree">Matriculation</h3>
+          <p class="edu-institution">2019 – 2021</p>
+          <div class="honors-badge">
+            🏆 Gold Medalist
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">04. Capabilities</div>
+        <h2 class="section-title">Skills & <span>Competencies</span></h2>
+        <p class="section-subtitle">Technical skill set, soft skills, and languages spoken.</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Technical Skills -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">Technical Skills</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info"><span>Front-End & Web Development</span><span>90%</span></div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Basic Programming</span><span>85%</span></div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>MS Office (Excel, Word, PowerPoint)</span><span>95%</span></div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Data Entry & Computer Operations</span><span>92%</span></div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Digital Marketing</span><span>80%</span></div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--accent-pink);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">Soft Skills</h3>
+          </div>
+          <div class="soft-skills-grid">
+            <div class="soft-skill-card">Communication Skills</div>
+            <div class="soft-skill-card">Leadership</div>
+            <div class="soft-skill-card">Problem Solving</div>
+            <div class="soft-skill-card">Event Management</div>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">Languages</h3>
+          </div>
+          <div class="lang-grid">
+            <div class="lang-pill">
+              <span>English</span>
+              <span class="lang-level">(Fluent)</span>
+            </div>
+            <div class="lang-pill">
+              <span>Urdu</span>
+              <span class="lang-level">(Fluent)</span>
+            </div>
+            <div class="lang-pill">
+              <span>Hindko</span>
+              <span class="lang-level">(Intermediate)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects & Coursework Section -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">05. Coursework</div>
+        <h2 class="section-title">Projects & <span>Certifications</span></h2>
+        <p class="section-subtitle">Ongoing computer science coursework and technical diplomas.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- CS50 -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img src="assets/images/project_1.png" alt="CS50 Harvard Coursework" class="project-img">
+            <div class="project-overlay">
+              <button class="btn btn-secondary open-modal" data-modal="cs50">View Details</button>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-category">Harvard Coursework</span>
+            <h3 class="project-title">CS50 (Harvard University)</h3>
+            <p class="project-desc">Ongoing rigorous computer science coursework focusing on algorithms, memory
+              management, data structures, and web development principles.</p>
+            <div class="project-tags">
+              <span class="tag">Computer Science</span>
+              <span class="tag">C / Python</span>
+              <span class="tag">Algorithms</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diploma in IT -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img src="assets/images/project_2.png" alt="Diploma in IT" class="project-img">
+            <div class="project-overlay">
+              <button class="btn btn-secondary open-modal" data-modal="dit">View Details</button>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-category">Technical Diploma</span>
+            <h3 class="project-title">Diploma in IT (DIT)</h3>
+            <p class="project-desc">Ongoing IT diploma program with specialization in database design, relational schema
+              architecture, SQL, and system administration.</p>
+            <div class="project-tags">
+              <span class="tag">Database Design</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Information Technology</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="section achievements" id="achievements">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">06. Recognition</div>
+        <h2 class="section-title">Honors & <span>Achievements</span></h2>
+        <p class="section-subtitle">Awards, medals, and academic distinctions earned.</p>
+      </div>
+
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-icon">🥇</div>
+          <div class="achievement-details">
+            <h3>Gold Medalist</h3>
+            <p>Awarded Gold Medal in Matriculation & College FSC for outstanding academic excellence.</p>
+          </div>
+        </div>
+
+        <div class="achievement-card">
+          <div class="achievement-icon">🥈</div>
+          <div class="achievement-details">
+            <h3>Silver Medalist</h3>
+            <p>Awarded Silver Medal in the Adept Entrepreneurship Competition for business innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">07. Contact</div>
+        <h2 class="section-title">Contact <span>Shazil Ayaz</span></h2>
+        <p class="section-subtitle">Feel free to reach out for web development, QA opportunities, or collaborations.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-cards">
+          <div class="contact-card" data-copy="Shazilayaz21@gmail.com">
+            <div class="contact-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div class="contact-detail">
+              <h4>Email</h4>
+              <p>Shazilayaz21@gmail.com (Click to copy)</p>
+            </div>
+          </div>
+
+          <div class="contact-card" data-copy="03110532440">
+            <div class="contact-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-purple);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+            </div>
+            <div class="contact-detail">
+              <h4>Phone</h4>
+              <p>03110532440 (Click to copy)</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon" style="background: rgba(236, 72, 153, 0.1); color: var(--accent-pink);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="contact-detail">
+              <h4>Location</h4>
+              <p>Abbottabad, Pakistan</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" id="email" class="form-control" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea id="message" class="form-control" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Send Message
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-text">
+        &copy; 2026 <strong>Shazil Ayaz</strong>. BS Cyber-Security & Computing Student, Abbottabad, Pakistan.
+      </div>
+      <a href="#hero" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+        Back to Top ↑
+      </a>
+    </div>
+  </footer>
+
+  <!-- Modal Popup for Project Details -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-body" id="modal-body">
+        <!-- Dynamic content filled via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
