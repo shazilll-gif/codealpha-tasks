@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wonders of the World — 3D Earth & Landscape Gallery</title>
+  <meta name="description" content="Explore Earth's most breathtaking natural wonders, highest mountains like K2, dancing Aurora Borealis, Cappadocia, Swiss Alps, and iconic landscapes in an interactive 3D experience.">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Three.js and GSAP CDN Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Fullscreen Background Video & Overlay -->
+  <video autoplay loop muted playsinline class="video-bg">
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <!-- Three.js Interactive 3D Canvas (Globe & Cosmic Particles) -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="navbar-container">
+    <a href="#hero" class="logo">
+      <span class="logo-icon"><i class="fa-solid fa-earth-americas"></i></span>
+      Wonders<span class="logo-accent">World</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#hero" class="nav-link active">Home</a>
+      <a href="#showcase-section" class="nav-link">3D Showcase</a>
+      <a href="#gallery-section" class="nav-link">World Gallery</a>
+      <a href="#expeditions-section" class="nav-link">Chronicles</a>
+      <a href="#reach-us-section" class="nav-link">Plan Expedition</a>
+    </nav>
+    <a href="#gallery-section" class="cta-btn liquid-glass">
+      <span>Explore 10+ Nations</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#hero" class="nav-link">Home</a>
+    <a href="#showcase-section" class="nav-link">3D Showcase</a>
+    <a href="#gallery-section" class="nav-link">World Gallery</a>
+    <a href="#expeditions-section" class="nav-link">Chronicles</a>
+    <a href="#reach-us-section" class="nav-link">Plan Expedition</a>
+    <a href="#gallery-section" class="cta-btn liquid-glass" style="margin-top: 1rem;">Explore 10+ Nations</a>
+  </div>
+
+  <!-- Cinematic Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge liquid-glass animate-fade-rise">
+        <span>🌍 Interactive 3D Landscape & Nature Odyssey</span>
+      </div>
+      <h1 class="hero-title animate-fade-rise">
+        Wonders of the <em class="not-italic text-accent-gradient">World.</em>
+      </h1>
+      <p class="hero-subtext animate-fade-rise-delay">
+        Journey across the soaring peaks of <strong>Pakistan’s K2</strong>, the ethereal <strong>Northern Lights of Norway & Iceland</strong>, the fairy chimneys of <strong>Türkiye</strong>, the dramatic <strong>Swiss & French Alps</strong>, and the mystic shrines of <strong>Japan & Korea</strong>.
+      </p>
+      
+      <!-- Live Stats Ticker -->
+      <div class="hero-stats animate-fade-rise-delay">
+        <div class="stat-item liquid-glass">
+          <span class="stat-num">8,611m</span>
+          <span class="stat-label">Highest Peak (K2)</span>
+        </div>
+        <div class="stat-item liquid-glass">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Countries Featured</span>
+        </div>
+        <div class="stat-item liquid-glass">
+          <span class="stat-num">3D WebGL</span>
+          <span class="stat-label">Interactive Globe</span>
+        </div>
+      </div>
+
+      <div class="hero-actions animate-fade-rise-delay-2">
+        <a href="#gallery-section" class="hero-cta liquid-glass">
+          <span>Discover Natural Sanctuaries</span>
+          <i class="fa-solid fa-compass"></i>
+        </a>
+        <a href="#showcase-section" class="hero-secondary-btn liquid-glass">
+          <span>View 3D Carousel</span>
+          <i class="fa-solid fa-play"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D Interactive Showcase Carousel -->
+  <section class="showcase-section" id="showcase-section">
+    <div class="section-header">
+      <span class="section-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Featured Highlights</span>
+      <h2 class="section-title">3D Interactive Horizon</h2>
+      <p class="section-subtitle">Swipe or click to cycle through high-definition 3D cards of Earth’s premier natural masterpieces.</p>
+    </div>
+
+    <!-- 3D Carousel Wrapper -->
+    <div class="carousel-3d-wrapper">
+      <button class="carousel-nav-btn carousel-prev liquid-glass" id="carousel-prev" aria-label="Previous wonder">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <div class="carousel-3d-stage" id="carousel-stage">
+        <!-- Dynamic Cards rendered via JS -->
+      </div>
+
+      <button class="carousel-nav-btn carousel-next liquid-glass" id="carousel-next" aria-label="Next wonder">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div class="carousel-hint">
+      <i class="fa-solid fa-arrows-left-right"></i> Drag or use arrows to rotate in 3D • Click any card for Fullscreen Lightbox
+    </div>
+  </section>
+
+  <!-- Main World Gallery Section -->
+  <section class="gallery-section" id="gallery-section">
+    
+    <div class="section-header">
+      <span class="section-badge"><i class="fa-solid fa-globe"></i> Global Sanctuaries</span>
+      <h2 class="section-title">World Wonders Gallery</h2>
+      <p class="section-subtitle">Explore authentic photography, country flags, elevations, and geographic wonders across continents.</p>
+    </div>
+
+    <!-- Search & Filter Hub -->
+    <div class="filter-search-hub">
+      <!-- Search Input -->
+      <div class="search-box liquid-glass">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search country, wonder, or peak (e.g. K2, Norway, Fuji, Alps)..." autocomplete="off">
+        <button id="search-clear-btn" class="search-clear" style="display: none;" aria-label="Clear search">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Country Filter Pills -->
+      <div class="filter-container" id="filter-container">
+        <button class="filter-btn active" data-country="all">
+          <span>🌍 All Wonders</span>
+        </button>
+        <button class="filter-btn" data-country="Pakistan">
+          <span class="flag">🇵🇰</span> <span>Pakistan</span>
+        </button>
+        <button class="filter-btn" data-country="Norway">
+          <span class="flag">🇳🇴</span> <span>Norway</span>
+        </button>
+        <button class="filter-btn" data-country="Switzerland">
+          <span class="flag">🇨🇭</span> <span>Switzerland</span>
+        </button>
+        <button class="filter-btn" data-country="Iceland">
+          <span class="flag">🇮🇸</span> <span>Iceland</span>
+        </button>
+        <button class="filter-btn" data-country="Japan">
+          <span class="flag">🇯🇵</span> <span>Japan</span>
+        </button>
+        <button class="filter-btn" data-country="Türkiye">
+          <span class="flag">🇹🇷</span> <span>Türkiye</span>
+        </button>
+        <button class="filter-btn" data-country="France">
+          <span class="flag">🇫🇷</span> <span>France</span>
+        </button>
+        <button class="filter-btn" data-country="Germany">
+          <span class="flag">🇩🇪</span> <span>Germany</span>
+        </button>
+        <button class="filter-btn" data-country="India">
+          <span class="flag">🇮🇳</span> <span>India</span>
+        </button>
+        <button class="filter-btn" data-country="South Korea">
+          <span class="flag">🇰🇷</span> <span>South Korea</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Filter Counter & Indicator -->
+    <div class="results-meta" id="results-meta">
+      Showing <span id="results-count" class="highlight-count">12</span> wonders across the globe
+    </div>
+
+    <!-- Gallery Grid View -->
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Grid items dynamically rendered via JS -->
+    </div>
+
+    <!-- No Results State -->
+    <div class="no-results" id="no-results" style="display: none;">
+      <i class="fa-solid fa-compass fa-bounce"></i>
+      <h3>No wonders found matching your search</h3>
+      <p>Try searching for countries like "Pakistan", "Norway", "Japan" or terms like "Alps", "Aurora", "K2".</p>
+      <button class="cta-btn liquid-glass" id="reset-filter-btn" style="margin-top: 1.5rem;">Show All Wonders</button>
+    </div>
+
+  </section>
+
+  <!-- Expedition Chronicles (Stories & Insights) -->
+  <section class="journal-section" id="expeditions-section">
+    <div class="section-header">
+      <span class="section-badge"><i class="fa-solid fa-book-open"></i> Expedition Field Notes</span>
+      <h2 class="section-title">Chronicles of the Earth</h2>
+      <p class="section-subtitle">In-depth expedition logs exploring extreme altitudes, polar storms, and volcanic islands.</p>
+    </div>
+
+    <div class="journal-grid">
+      <!-- Chronicle 1: K2 Karakoram -->
+      <article class="journal-card liquid-glass" data-story="k2">
+        <div class="journal-thumb">
+          <img src="images/k2_pakistan.jpg" alt="K2 Savage Mountain Pakistan" loading="lazy">
+          <span class="journal-tag">🇵🇰 Pakistan • Karakoram</span>
+        </div>
+        <div class="journal-body">
+          <div class="journal-meta">
+            <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+            <span><i class="fa-solid fa-mountain"></i> 8,611m Summit</span>
+          </div>
+          <h3 class="journal-title">The Savage Throne: Karakoram & The Realm of K2</h3>
+          <p class="journal-excerpt">
+            Standing fiercely in Pakistan's Gilgit-Baltistan region, K2 is recognized as the world's most daunting peak. Trekking through Concordia and the Baltoro Glacier reveals a cathedral of ice and stone unmatched anywhere.
+          </p>
+          <button class="journal-read-btn">
+            Read Full Chronicle <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </article>
+
+      <!-- Chronicle 2: Aurora Borealis -->
+      <article class="journal-card liquid-glass" data-story="aurora">
+        <div class="journal-thumb">
+          <img src="images/aurora_borealis.jpg" alt="Aurora Borealis Norway" loading="lazy">
+          <span class="journal-tag">🇳🇴 Norway • Tromsø</span>
+        </div>
+        <div class="journal-body">
+          <div class="journal-meta">
+            <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+            <span><i class="fa-solid fa-sun"></i> Solar Coronal Stream</span>
+          </div>
+          <h3 class="journal-title">Celestial Dances: Aurora Borealis in Norway</h3>
+          <p class="journal-excerpt">
+            Under sub-zero polar skies in Tromsø and Lofoten, solar winds collide with the upper atmosphere to create mesmerizing ribbons of emerald and violet fire over snowy Arctic fjords.
+          </p>
+          <button class="journal-read-btn">
+            Read Full Chronicle <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </article>
+
+      <!-- Chronicle 3: Cappadocia Fairy Chimneys -->
+      <article class="journal-card liquid-glass" data-story="cappadocia">
+        <div class="journal-thumb">
+          <img src="https://images.unsplash.com/photo-1570939274717-7eda259b50ed?auto=format&fit=crop&w=1000&q=80" alt="Cappadocia Turkey" loading="lazy">
+          <span class="journal-tag">🇹🇷 Türkiye • Anatolia</span>
+        </div>
+        <div class="journal-body">
+          <div class="journal-meta">
+            <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+            <span><i class="fa-solid fa-wind"></i> Volcanic Tuff Formations</span>
+          </div>
+          <h3 class="journal-title">Balloons at Dawn: The Surreal Skies of Cappadocia</h3>
+          <p class="journal-excerpt">
+            Carved by millions of years of volcanic erosion and ancient subterranean civilizations, the honeycomb hills and fairy chimneys of Göreme come alive at sunrise under hundreds of hot air balloons.
+          </p>
+          <button class="journal-read-btn">
+            Read Full Chronicle <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Plan an Expedition (Reach Us) Section -->
+  <section class="reach-us-section" id="reach-us-section">
+    <div class="section-header">
+      <span class="section-badge"><i class="fa-solid fa-compass"></i> Expedition Inquiries</span>
+      <h2 class="section-title">Reach Us & Plan an Expedition</h2>
+      <p class="section-subtitle">Interested in landscape photography expeditions, fine-art prints, or custom 3D galleries? Connect with our team.</p>
+    </div>
+
+    <div class="reach-us-container">
+      <!-- Basecamp Cards -->
+      <div class="contact-info-col">
+        <div class="info-card liquid-glass">
+          <div class="info-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+          <div class="info-text">
+            <h4>🇵🇰 Karakoram Basecamp</h4>
+            <p>Gilgit & Islamabad, Pakistan</p>
+            <span class="info-highlight">K2, Hunza & High Altitude Photography</span>
+          </div>
+        </div>
+
+        <div class="info-card liquid-glass">
+          <div class="info-icon"><i class="fa-solid fa-wand-sparkles"></i></div>
+          <div class="info-text">
+            <h4>🇳🇴 Arctic Aurora Observatory</h4>
+            <p>Tromsø & Lofoten, Norway</p>
+            <span class="info-highlight">Northern Lights Polar Expeditions</span>
+          </div>
+        </div>
+
+        <div class="info-card liquid-glass">
+          <div class="info-icon"><i class="fa-solid fa-paper-plane"></i></div>
+          <div class="info-text">
+            <h4>🌍 Global Curations Studio</h4>
+            <p>contact@wondersoftheworld.org</p>
+            <span class="info-highlight">24/7 Worldwide Assistance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact / Inquiry Form -->
+      <div class="contact-form-col">
+        <form class="contact-form liquid-glass" id="contact-form">
+          <h3 class="form-title">Send an Expedition Dispatch</h3>
+          <p class="form-desc">Select your destination of interest and our curators will get in touch.</p>
+
+          <div class="form-group">
+            <label for="form-name">Full Name</label>
+            <input type="text" id="form-name" placeholder="e.g. Eleanor Vance" required>
+          </div>
+
+          <div class="form-group">
+            <label for="form-email">Email Address</label>
+            <input type="email" id="form-email" placeholder="e.g. explorer@domain.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="form-destination">Destination / Country of Interest</label>
+            <select id="form-destination" required>
+              <option value="Pakistan">🇵🇰 Pakistan — K2, Hunza & Karakoram</option>
+              <option value="Norway">🇳🇴 Norway — Aurora Borealis & Fjords</option>
+              <option value="Switzerland">🇨🇭 Switzerland — Matterhorn & Swiss Alps</option>
+              <option value="Iceland">🇮🇸 Iceland — Waterfalls & Northern Lights</option>
+              <option value="Japan">🇯🇵 Japan — Mount Fuji & Lakes</option>
+              <option value="Turkiye">🇹🇷 Türkiye — Cappadocia & Fairy Chimneys</option>
+              <option value="France">🇫🇷 France — French Alps & Mont Blanc</option>
+              <option value="Germany">🇩🇪 Germany — Black Forest</option>
+              <option value="India">🇮🇳 India — Himalayas & Ladakh</option>
+              <option value="South Korea">🇰🇷 South Korea — Jeju Island</option>
+              <option value="Prints">🖼️ Fine Art Prints & Licensing</option>
+              <option value="General">✨ General Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="form-message">Message / Expedition Requirements</label>
+            <textarea id="form-message" rows="4" placeholder="Tell us about the destinations, photography expeditions, or prints you'd like to explore..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn liquid-glass" id="form-submit-btn">
+            <span>Transmit Dispatch</span> <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <!-- Success Alert -->
+          <div class="form-alert" id="form-alert">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Dispatch received! Our expedition curators will contact you within 24 hours.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    
+    <button class="lightbox-arrow lightbox-arrow-left" id="lightbox-prev" aria-label="Previous wonder">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrapper">
+        <img src="" alt="Full Preview" class="lightbox-img" id="lightbox-img">
+        <div class="lightbox-badge" id="lightbox-badge">🇵🇰 Pakistan</div>
+      </div>
+      <div class="lightbox-meta">
+        <h3 class="lightbox-title" id="lightbox-title">Wonder Title</h3>
+        <p class="lightbox-location" id="lightbox-location"><i class="fa-solid fa-location-dot"></i> Location Tag</p>
+        <p class="lightbox-desc" id="lightbox-desc">Detailed natural wonder description.</p>
+        <div class="lightbox-counter" id="lightbox-counter">1 of 12</div>
+      </div>
+    </div>
+
+    <button class="lightbox-arrow lightbox-arrow-right" id="lightbox-next" aria-label="Next wonder">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <!-- Story Chronicle Reading Modal -->
+  <div class="story-modal" id="story-modal" aria-hidden="true">
+    <div class="story-modal-content liquid-glass">
+      <button class="story-modal-close" id="story-modal-close" aria-label="Close story">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="story-modal-body" id="story-modal-body">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <a href="#hero" class="logo" style="justify-content: center; margin-bottom: 1.25rem;">
+        <span class="logo-icon"><i class="fa-solid fa-earth-americas"></i></span>
+        Wonders<span class="logo-accent">World</span>
+      </a>
+      <p class="footer-desc">
+        A 3D tribute to the pristine natural sanctuaries of Earth: 🇵🇰 Pakistan, 🇮🇳 India, 🇹🇷 Türkiye, 🇫🇷 France, 🇩🇪 Germany, 🇰🇷 South Korea, 🇳🇴 Norway, 🇯🇵 Japan, 🇨🇭 Switzerland, and 🇮🇸 Iceland.
+      </p>
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#showcase-section">3D Showcase</a>
+        <a href="#gallery-section">World Gallery</a>
+        <a href="#expeditions-section">Chronicles</a>
+        <a href="#reach-us-section">Plan Expedition</a>
+      </div>
+      <p class="copyright">© 2026 Wonders of the World. Built with Three.js, WebGL & GSAP.</p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
